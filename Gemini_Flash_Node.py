@@ -53,9 +53,10 @@ class Gemini_Flash_CustomPro:
             self.configure_genai()
 
     def configure_genai(self):
-        genai.configure(
-            api_key=self.api_key, api_endpoint=self.base_url, transport="rest"
-        )
+        client_options = {"api_key": self.api_key}
+        if self.base_url:
+            client_options["api_endpoint"] = self.base_url
+        genai.configure(client_options=client_options, transport="rest")
 
     @classmethod
     def INPUT_TYPES(cls):
