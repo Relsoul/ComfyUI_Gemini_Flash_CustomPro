@@ -44,10 +44,11 @@ def temporary_env_var(key: str, new_value):
 
 class Gemini_Flash_CustomPro:
 
-    def __init__(self, api_key=None, proxy=None):
+    def __init__(self, api_key=None, proxy=None, base_url=None):
         config = get_config()
         self.api_key = api_key or config.get("GEMINI_API_KEY")
         self.proxy = proxy or config.get("PROXY")
+        self.base_url = base_url or config.get("BASE_URL")
         if self.api_key is not None:
             self.configure_genai()
 
